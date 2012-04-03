@@ -22,3 +22,6 @@
 [submodule "bootstrap"]
 	path = bootstrap
 	url = git://github.com/twitter/bootstrap.git
+[submodule "js/lib/isotope"]
+	path = js/lib/isotope
+	url = git://github.com/desandro/isotope.git

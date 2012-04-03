@@ -14,14 +14,34 @@
 		    <div class="container">
 		    	<a href="#" class="brand">Hotel Manager</a>
 		     	<ul class="nav">
-		      		<li><a href="#">test</a></li>
-		      		<li><a href="#">test2</a></li>
-		      		<li><a href="#">test3</a></li>
+		      		<li><a href="#" onclick="$('#operator-view').removeClass('hide');$('#room-view').addClass('hide')">Operators</a></li>
+		      		<li><a href="#" onclick="$('#room-view').removeClass('hide');$('#operator-view').addClass('hide')">Rooms</a></li>
+		      		<li><a href="#">Bills</a></li>
+		      		<li><a href="#">Search</a></li>
 		      	</ul>
 		    </div>
 		  </div>
-		<div class="container" id="operator-view">
-			<div class="container" id="operator-list">
+		 </div>
+		<div class="container" id="room-view">
+			<div class="row show-grid" style="margin-bottom: 30px;">
+				<div class="btn-group span4" data-toggle="buttons-checkbox">
+				  <button class="btn btn-primary room-type">经济房</button>
+				  <button class="btn btn-primary room-type">标准间</button>
+				  <button class="btn btn-primary room-type">大床房</button>
+				</div>
+				<button class="btn btn-primary room-status" data-toggle="button">可入住</button>
+				<button class="btn btn-primary room-price" data-toggle="button" >价格排序</button>
+				<a href="#" style="float: right;" class="btn btn-primary addRoom">Add Room</a>
+				
+			</div>
+			<div class="row show-grid" >
+				<div id="room-list">
+				</div>
+				
+			</div>
+		</div>
+		<div class="container hide" id="operator-view">
+			<div class="row show-grid" id="operator-list" style="margin-top: 30px;">
 				<table class="table table-striped">
 					<tr>
 						<th>#</th>
@@ -71,6 +91,48 @@
 		    <a href="#" class="btn btn-primary">Save</a>
 		  </div>
 		</div>
+		
+		
+		<div class="modal hide fade " id="room-edit">
+		  <div class="modal-header">
+		    <a class="close" data-dismiss="modal">×</a>
+		    <h3>Room Edit </h3>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-horizontal">
+		      	<input type="hidden" name="room_id" value="">
+		        <div class="control-group">
+		          <label class="control-label" for="room_name">Number</label>
+		          <div class="controls">
+		            <input type="text" class="input-xlarge" name="room_name" id="room_name">
+		            <p class="help-block">Must Number</p>
+		          </div>
+		        </div>
+		        <div class="control-group">
+		                 <label class="control-label" for="room_type">Type</label>
+		                 <div class="controls">
+                               <select id="room_type" name="room_type">
+                                 <option value="经济房">经济房</option>
+                                 <option value="大床房">大床房</option>
+                                 <option value="标准间">标准间</option>
+                               </select>
+		                  </div>
+		               </div>
+		     <div class="control-group">
+		       <label class="control-label" for="room_price">Price</label>
+		       <div class="controls">
+		         <input type="text" name="room_price" class="input-xlarge" id="room_price">
+		         <p class="help-block">Must Number</p>
+		       </div>
+		     </div>
+		    </form>
+		  </div>
+		  <div class="modal-footer">
+		    <a href="#" class="btn" data-dismiss="modal">Close</a>
+		    <a href="#" class="btn btn-primary">Save</a>
+		  </div>
+		</div>
+		
 	</body>
 	
 	<script type="text/template" id="operator-item-view">
@@ -84,5 +146,17 @@
 				 | <a class="delete" data-id="{{_id}}">Delete</a>
 			</td>
 		</tr>
+	</script>
+	<script type="text/template" id="room-item-view">
+	<div class="room-item span3" data-name="{{room_name}}" data-type="{{room_type}}" data-status="{{room_status}}" data-price="{{room_price}}">
+		{{room_name}} / {{room_type}}
+		<div class="room-option">
+			{{#if room_status}}
+				<a href="#" class="btn btn-primary">退房</a>
+			{{else}}
+				<a href="#delete" class="btn btn-primary">入住</a>
+			{{/if}}
+		</div>
+	</div>
 	</script>
 </html>

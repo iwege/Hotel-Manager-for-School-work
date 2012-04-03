@@ -39,7 +39,7 @@
 				, Rooms : {
 					  tableName:'rooms'
 					, columns:{
-						  room_name : {type:'text'}
+						  room_name : {type:'integer'}
 						, room_type : {type:'text'}
 						, room_price: {type:'integer'}
 						, room_status:{type:'integer'}

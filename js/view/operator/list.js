@@ -3,10 +3,9 @@
 	var server = app.observer;
 	var operator = Backbone.View.extend({
 		  collection : new app.collection.operators()
+		, el:$('#operator-list')
 		, initialize:function(){
 			var self = this;
-			this.$el = $('#operator-list');
-			
 			this.template = Handlebars.compile($('#operator-item-view').html());
 			this.collection
 						.on("reset",this.addAll.bind(this),this);
@@ -69,7 +68,7 @@
 			var model  = this.collection.get(data.id);
 			delete data.id;
 			model.set(data);
-			this.$el.find('table tr[data-id="'+data._id+'"]').replaceWith(this.template(data));
+			this.$el.find('table tr[data-id="'+data.id+'"]').replaceWith(this.template(data));
 			server.trigger('operator:hideEdit');
 		}
 	});
@@ -176,9 +175,7 @@
 			this.$sumit
 					.removeClass('disabled')
 					.html('Save');
-			this.$password.closest('.control-group').removeClass('error');
-			this.$name.closest('.control-group').removeClass('error');
-			this.$title.closest('.control-group').removeClass('error');
+			this.$el.find('.control-group').removeClass('error');
 		}
 	});
 	app.view.operatorForm = new operatorForm();

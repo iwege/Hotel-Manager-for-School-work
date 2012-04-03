@@ -1,7 +1,8 @@
 yepnope([{
 	  load:['js/lib/underscore/underscore.js'
-	  		
 	  		,'js/lib/jquery/dist/jquery.js'
+	  		,'js/lib/isotope/jquery.isotope.js'
+	  		,'js/lib/isotope/css/style.css'
 			,'js/lib/backbone/backbone.js'
 			,'js/lib/snake/build/snake.js'
 			,'js/lib/handlebars/dist/handlebars.js'
@@ -34,9 +35,13 @@ yepnope([{
 			, 'js/model/operator.js'
 			, 'js/model/room.js'
 			, 'js/collection/operators.js'
+			, 'js/collection/rooms.js'
+			, 'js/collection/bills.js'
 		]
 	},{
 		load:[
-			'js/view/operator/list.js'
+			  'js/view/operator/list.js'
+			, 'js/view/room.js'
+			, 'js/view/bill.js'
 		]
 	}]);

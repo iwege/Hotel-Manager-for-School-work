@@ -1,3 +1,36 @@
 body{
 	background:url(../images/tile.gif);
 }
+
+.room-item{
+	height: 150px;
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius:5px;
+	box-sizing: border-box;
+	padding: 10px;
+	margin-bottom: 20px;
+	position: relative;
+	background: #fff;
+}
+.room-item .room-option{
+	position: absolute;
+	bottom: 10px;
+	right:10px;
+	text-align:right;
+}
+.container, .navbar-fixed-top .container, .navbar-fixed-bottom .container{
+	width: 960px;
+}
+#room-view{
+	margin-top: 80px;	
+}
+/**** Isotope filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}

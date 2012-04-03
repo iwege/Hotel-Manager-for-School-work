@@ -1,13 +1,12 @@
 (function(app){
 	var db = app.storage.operators;
-	console.log(db);
+
 	app.model.operator =  Backbone.Model.extend({
 		idAttribute:'_id'
 		, dbSave:function(opt){
 			var self = this;
 			var info = this.toJSON();
 			delete info.id;
-			console.log('save',info);
 			db.save(info,function(err,id){
 				self.set({"_id":id});
 				opt && opt.success && opt.success(id);
@@ -20,6 +19,7 @@
 			});
 		}
 		, initialize:function(info){
+			console.log('operator:init');
 			var self = this;
 			this.on('change',function(model,options){
 				var opt = options;
@@ -27,7 +27,6 @@
 					opt = {};
 					opt.success = options;
 				}
-				console.log('change');
 				self.dbSave(opt);
 			});
 			

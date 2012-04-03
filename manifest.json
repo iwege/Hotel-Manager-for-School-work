@@ -1,0 +1,17 @@
+{
+  "name": "Hotel Manager",
+  "description": "Hotel Manager",
+  "version": "0.1.0",
+  "app": {
+    "launch": {
+      "local_path": "index.html",
+	 "container": "tab"
+    }
+  },
+  "permissions": [
+    "tabs", 
+	"http://*/*", "https://*/*",
+	"unlimitedStorage",
+	"notifications"
+  ]
+}

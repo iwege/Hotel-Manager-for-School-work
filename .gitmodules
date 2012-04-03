@@ -1,0 +1,24 @@
+[submodule "js/lib/jquery"]
+	path = js/lib/jquery
+	url = git://github.com/jquery/jquery.git
+[submodule "js/lib/backbone"]
+	path = js/lib/backbone
+	url = git://github.com/documentcloud/backbone.git
+[submodule "js/lib/underscore"]
+	path = js/lib/underscore
+	url = git://github.com/documentcloud/underscore.git
+[submodule "js/lib/yepnope"]
+	path = js/lib/yepnope
+	url = git://github.com/SlexAxton/yepnope.js.git
+[submodule "js/lib/snake"]
+	path = js/lib/snake
+	url = git://github.com/goatslacker/Snake.git
+[submodule "js/lib/handlebars"]
+	path = js/lib/handlebars
+	url = git://github.com/wycats/handlebars.js.git
+[submodule "js/lib/less"]
+	path = js/lib/less
+	url = git://github.com/cloudhead/less.js.git
+[submodule "bootstrap"]
+	path = bootstrap
+	url = git://github.com/twitter/bootstrap.git

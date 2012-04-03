@@ -17,9 +17,9 @@
 	}
 	exports.storage.clear = function(){
 		localStorage.clear();
-		exports.storage.db.SQL('DROP table feeds');
-		exports.storage.db.SQL('DROP table categories');
-		exports.storage.db.SQL('DROP table posts');
+		exports.storage.db.SQL('DROP table bills');
+		exports.storage.db.SQL('DROP table operators');
+		exports.storage.db.SQL('DROP table rooms');
 		console.log('Drop all tables');
 	}
 	console.log('initialize db finished');

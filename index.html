@@ -5,24 +5,84 @@
 		<script src="js/lib/yepnope/yepnope.js"></script>
 		<script src="js/app.loader.js"></script>
 		<link href="bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+		<link href="bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
 		<link href="css/app.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container-fluid">
-		  <div class="row-fluid">
-		    <div class="span2">
-				Welcome
-				<ul class="nav nav-pills nav-stacked">
-					<li><a href="#">test</a></li>
-					<li><a href="#">test2</a></li>
-					<li><a href="#">test3</a></li>
-				</ul>
+		<div class="navbar  navbar-fixed-top">
+		  <div class="navbar-inner">
+		    <div class="container">
+		    	<a href="#" class="brand">Hotel Manager</a>
+		     	<ul class="nav">
+		      		<li><a href="#">test</a></li>
+		      		<li><a href="#">test2</a></li>
+		      		<li><a href="#">test3</a></li>
+		      	</ul>
 		    </div>
-		    <div class="span10">
-				test2
-		      <!--Body content-->
-		    </div>
+		  </div>
+		<div class="container" id="operator-view">
+			<div class="container" id="operator-list">
+				<table class="table table-striped">
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Title</th>
+						<th>Password</th>
+						<th>Operation</th>
+					</tr>
+				</table>
+				<a href="#add-operator" class="add btn btn-large btn-primary" style="float: right;">Add New </a>
+			</div>
+			
+		</div>
+		</div>
+		<div class="modal hide fade " id="operator-edit">
+		  <div class="modal-header">
+		    <a class="close" data-dismiss="modal">×</a>
+		    <h3>Operator Edit </h3>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-horizontal">
+		      	<input type="hidden" name="operator-id" value="">
+		        <div class="control-group">
+		          <label class="control-label" for="name">Name</label>
+		          <div class="controls">
+		            <input type="text" class="input-xlarge" name="operator-name" id="operator-name">
+		 
+		          </div>
+		        </div>
+		        <div class="control-group">
+		                 <label class="control-label" for="title">Title</label>
+		                 <div class="controls">
+		                   <input type="text" class="input-xlarge" name="operator-title" id="operator-title">
+		        
+		                 </div>
+		               </div>
+		     <div class="control-group">
+		       <label class="control-label" for="password">Password</label>
+		       <div class="controls">
+		         <input type="text" name="operator-password" class="input-xlarge" id="operator-password">
+		       </div>
+		     </div>
+		    </form>
+		  </div>
+		  <div class="modal-footer">
+		    <a href="#" class="btn" data-dismiss="modal">Close</a>
+		    <a href="#" class="btn btn-primary">Save</a>
 		  </div>
 		</div>
 	</body>
+	
+	<script type="text/template" id="operator-item-view">
+		<tr data-id="{{_id}}">
+			<td>{{_id}}</td>
+			<td>{{name}}</td>
+			<td>{{title}}</td>
+			<td>{{password}}</td>
+			<td>
+				<a class="edit" data-id="{{_id}}">Edit</a>
+				 | <a class="delete" data-id="{{_id}}">Delete</a>
+			</td>
+		</tr>
+	</script>
 </html>

@@ -5,4 +5,5 @@
 		App.user.login();
 	}
 	w.App = App;
+
 }(window))

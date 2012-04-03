@@ -1,8 +1,9 @@
 yepnope([{
 	  load:['js/lib/underscore/underscore.js'
+	  		
+	  		,'js/lib/jquery/dist/jquery.js'
 			,'js/lib/backbone/backbone.js'
 			,'js/lib/snake/build/snake.js'
-			,'js/lib/jquery/dist/jquery.js'
 			,'js/lib/handlebars/dist/handlebars.js'
 	]}
 	,{
@@ -28,9 +29,14 @@ yepnope([{
 	},{
 		load:[
 			  'js/app.model.js'
+			, 'js/app.collection.js'
 			, 'js/model/bill.js'
-			, 'js/model/client.js'
 			, 'js/model/operator.js'
 			, 'js/model/room.js'
+			, 'js/collection/operators.js'
+		]
+	},{
+		load:[
+			'js/view/operator/list.js'
 		]
 	}]);

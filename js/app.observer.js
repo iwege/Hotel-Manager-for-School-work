@@ -1,3 +1,3 @@
 (function(app){
-	app.observer = new Backbone.Event();
+	app.observer = _.extend({},Backbone.Events);
 }(App));

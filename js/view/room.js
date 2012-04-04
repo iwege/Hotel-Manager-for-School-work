@@ -38,14 +38,21 @@
 			server.on('room:edit',function(data){
 					self.change(data);
 			});
+			server.on('room:checkinSave',function(bill){
+				self.$el.find('.room-item[data-id="'+bill.get('room_id')+'"]').addClass('checkin')[0].dataset.status = bill.get('_id');
+				
+			});
+			server.on('room:checkoutSave',function(id){
+				self.$el.find('.room-item[data-id="'+id+'"]').removeClass('checkin')[0].dataset.status = "0";
+			})
 		}
 		, events:{
-			  'click a.delete ': 'remove'
-			, 'click a.edit '	: 'showEdit' 
+			  'click button.checkin': 'checkin'
+			, 'click button.checkout'	: 'checkout' 
 			, 'click a.addRoom': 'showEdit'
-			, 'click button.room-status':'status'
-			, 'click button.room-price':'price'
-			, 'click button.room-type':'type'
+			, 'click button.room-status':'filter'
+			, 'click button.room-price':'filter'
+			, 'click button.room-type':'filter'
 		}
 		, addAll:function(data){
 			var self=  this;
@@ -53,38 +60,42 @@
 				self.addOne(item);
 			})
 		}
-		, price:function(evt){
-			var active = $(evt.target).hasClass('active');
-			
-			if (!active) {
-				
-				this.$list.isotope({sortBy:'price'});
-			}else{
-				this.$list.isotope({sortBy:'name'});
-			}
+		, checkin:function(evt){
+			var id = $(evt.target).closest('.room-item').data('id');
+			var model = this.collection.get(id);
+			server.trigger('room:checkin',model);
 		}
-		, status:function(evt){
-			var active = $(evt.target).hasClass('active');
-			
-			if (!active) {
-				this.$list.isotope({filter:'[data-status=0]'});
-			}else{
-				this.$list.isotope({filter:'[data-name]'});
-			}
+		, checkout:function(evt){
+		var id = $(evt.target).closest('.room-item').data('id');
+		var model = this.collection.get(id);
+			server.trigger('room:checkout',model);
 		}
-		, type:function(evt){
+		, filter:function(){
 			var self = this;
 			setTimeout(function(){
 				var filter = '*';
-				var $active = $('.room-type:not(.active)');
-				if ($active.length != 3) {
-					$active.each(function(i,item){
+				var sortBy = 'name';
+				var $type = $('.room-type:not(.active)');
+				var $status = $('.room-status').hasClass('active');
+				var $price = $('.room-price').hasClass('active');
+				
+				if ($status) {
+					filter +='[data-status="0"]';
+				}
+				if ($type.length != 3) {
+					$type.each(function(i,item){
 						filter += ':not([data-type="'+$(item).html()+'"])';
 					});	
 				}
-				console.log(filter);
-				self.$list.isotope({filter:filter});
-			},0);
+				if ($price) {
+					sortBy = 'price'
+				}
+				
+				self.$list.isotope({
+					  filter:filter
+					, sortBy:sortBy
+				});
+			},0)
 			
 		}
 		, showEdit:function(evt){
@@ -151,6 +162,7 @@
 			this.$price = this.$el.find('[name="room_price"]');
 			server.on('room:showEdit',this.show,this);
 			server.on('room:hideEdit',this.hide,this);
+			
 			
 		}
 		, removeError:function(evt){

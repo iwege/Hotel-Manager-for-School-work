@@ -18,6 +18,16 @@ body{
 	right:10px;
 	text-align:right;
 }
+
+.room-item .checkout{
+	display: none;
+}
+.room-item.checkin .checkin{
+	display: none;
+}
+.room-item.checkin .checkout{
+	display: block;
+}
 .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container{
 	width: 960px;
 }

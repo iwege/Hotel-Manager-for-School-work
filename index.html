@@ -133,6 +133,105 @@
 		  </div>
 		</div>
 		
+		
+		
+		
+		<div class="modal hide fade " id="room-checkin">
+		  <div class="modal-header">
+		    <a class="close" data-dismiss="modal">×</a>
+		    <h3>Room CheckIn </h3>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-horizontal">
+		      	<input type="hidden" name="room_id" value="">
+		        <div class="control-group">
+		          <label class="control-label" for="client_name">Name</label>
+		          <div class="controls">
+		            <input type="text" class="input-xlarge" name="client_name" id="client_name">
+		      
+		          </div>
+		        </div>
+		      <div class="control-group">
+		          <label class="control-label" for="sex">Sex</label>
+		          <div class="controls btn-group" data-toggle="buttons-radio">
+		          		  <a class="btn active sex">Man</a>
+		          		  <a class="btn sex">Female</a>
+		          </div>
+		        </div>
+		       <div class="control-group">
+		         <label class="control-label" for="age">Age</label>
+		         <div class="controls">
+		           <input type="text" name="age" class="input-xlarge" id="age">
+		         </div>
+		       </div>
+		        <div class="control-group">
+		          <label class="control-label" for="id_number">I.D Card</label>
+		          <div class="controls">
+		            <input type="text" name="id_number" class="input-xlarge" id="id_number">
+		          </div>
+		        </div>
+		     <div class="control-group">
+		       <label class="control-label" for="cash_pledge">Cash Pledge</label>
+		       <div class="controls">
+		         <input type="text" name="cash_pledge" class="input-xlarge" id="cash_pledge">
+		       </div>
+		     </div>
+		     <div class="control-group">
+		       <label class="control-label" for="checkin">Checkin Time</label>
+		       <div class="controls">
+		         <input type="text" name="checkin" class="input-xlarge" id="checkin">
+		       </div>
+		     </div>
+		    </form>
+		  </div>
+		  <div class="modal-footer">
+		    <a href="#" class="btn" data-dismiss="modal">Close</a>
+		    <a href="#" class="btn btn-primary">Save</a>
+		  </div>
+		</div>
+		
+		
+		
+		<div class="modal hide fade " id="room-checkout">
+		  <div class="modal-header">
+		    <a class="close" data-dismiss="modal">×</a>
+		    <h3>Room CheckOut </h3>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-horizontal">
+		      	<input type="hidden" name="room_id" value="">
+		     <div class="control-group">
+		       <label class="control-label" for="days">Days</label>
+		       <div class="controls">
+		       <span class="input-xlarge uneditable-input days" ></span>
+		       <input type="hidden" name="days"id="days">
+		       </div>
+		     </div>
+		     <div class="control-group">
+		       <label class="control-label" for="total_price">Total Price</label>
+		       <div class="controls">
+		       <span class="input-xlarge uneditable-input total_price"></span>
+		       <input type="hidden" name="total_price"id="total_price">
+		       
+		       </div>
+		     </div>
+		     <div class="control-group">
+		       <label class="control-label" for="checkout">Checkout Time</label>
+		       <div class="controls">
+		       	<span class="input-xlarge uneditable-input checkout" ></span>
+		         <input type="hidden" name="checkout"id="checkout">
+		       </div>
+		     </div>
+		    </form>
+		  </div>
+		  <div class="modal-footer">
+		    <a href="#" class="btn" data-dismiss="modal">Close</a>
+		    <a href="#" class="btn btn-primary">Save</a>
+		  </div>
+		</div>
+		
+		
+		
 	</body>
 	
 	<script type="text/template" id="operator-item-view">
@@ -148,14 +247,14 @@
 		</tr>
 	</script>
 	<script type="text/template" id="room-item-view">
-	<div class="room-item span3" data-name="{{room_name}}" data-type="{{room_type}}" data-status="{{room_status}}" data-price="{{room_price}}">
+	<div class="room-item span3 {{#if room_status}} checkin{{/if}}" data-id="{{_id}}" data-name="{{room_name}}" data-type="{{room_type}}" data-status="{{room_status}}" data-price="{{room_price}}">
 		{{room_name}} / {{room_type}}
 		<div class="room-option">
-			{{#if room_status}}
-				<a href="#" class="btn btn-primary">退房</a>
-			{{else}}
-				<a href="#delete" class="btn btn-primary">入住</a>
-			{{/if}}
+			
+				<button class="btn  checkout">Checkout</button>
+			
+				<button class="btn btn-primary checkin">Checkin</button>
+			
 		</div>
 	</div>
 	</script>

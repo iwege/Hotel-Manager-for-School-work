@@ -20,7 +20,6 @@
 		}
 		, initialize:function(info){
 			var self = this;
-			
 			this.on('change',function(model,options){
 				var opt = options;
 				if (_.isFunction(options)) {

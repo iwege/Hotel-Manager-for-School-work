@@ -17,8 +17,8 @@
 						, room_id:{type:'integer'}
 						, clint_name:{type:'text'}
 						, cash_pledge:{type:'integer'}
-						, add_date:{type:'text'}
-						, leave_data:{type:'text'}
+						, checkin:{type:'text'}
+						, checkout:{type:'text'}
 						, days:{type:"integer"}
 						, price:{type:"integer"}
 						, total_price:{type:"integer"}

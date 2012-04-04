@@ -6,6 +6,7 @@ yepnope([{
 			,'js/lib/backbone/backbone.js'
 			,'js/lib/snake/build/snake.js'
 			,'js/lib/handlebars/dist/handlebars.js'
+			,'js/lib/dateformat.js'
 	]}
 	,{
 		load:[
@@ -37,11 +38,14 @@ yepnope([{
 			, 'js/collection/operators.js'
 			, 'js/collection/rooms.js'
 			, 'js/collection/bills.js'
+			
 		]
 	},{
 		load:[
 			  'js/view/operator/list.js'
 			, 'js/view/room.js'
 			, 'js/view/bill.js'
+			, 'js/view/checkin.js'
+			, 'js/view/checkout.js'
 		]
 	}]);

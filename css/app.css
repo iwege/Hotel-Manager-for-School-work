@@ -1,7 +1,9 @@
 body{
 	background:url(../images/tile.gif);
 }
-
+.room-list{
+	width: 100%;
+}
 .room-item{
 	height: 150px;
 	border: 1px solid rgba(0,0,0,0.2);

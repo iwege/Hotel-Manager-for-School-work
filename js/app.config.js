@@ -15,7 +15,7 @@
 					, columns:{
 						  bill_id:{type:'integer'}
 						, room_id:{type:'integer'}
-						, clint_name:{type:'text'}
+						, client_name:{type:'text'}
 						, cash_pledge:{type:'integer'}
 						, checkin:{type:'text'}
 						, checkout:{type:'text'}

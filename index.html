@@ -9,14 +9,15 @@
 		<link href="css/app.css" rel="stylesheet">
 	</head>
 	<body>
+	<div id="workspace" class="hide">
 		<div class="navbar  navbar-fixed-top">
 		  <div class="navbar-inner">
 		    <div class="container">
 		    	<a href="#" class="brand">Hotel Manager</a>
 		     	<ul class="nav">
-		      		<li><a href="#" onclick="$('#operator-view').removeClass('hide');$('#room-view').addClass('hide')">Operators</a></li>
-		      		<li><a href="#" onclick="$('#room-view').removeClass('hide');$('#operator-view').addClass('hide')">Rooms</a></li>
-		      		<li><a href="#">Bills</a></li>
+		      		<li><a href="#" onclick="$('#operator-view').removeClass('hide');$('#room-view,#bill-view').addClass('hide')">Operators</a></li>
+		      		<li><a href="#" onclick="$('#room-view').removeClass('hide');$('#operator-view,#bill-view').addClass('hide')">Rooms</a></li>
+		      		<li><a href="#" onclick="$('#bill-view').removeClass('hide');$('#room-view,#operator-view').addClass('hide');App.observer.trigger('bill:refresh')">Bills</a></li>
 		      		<li><a href="#">Search</a></li>
 		      	</ul>
 		    </div>
@@ -55,7 +56,54 @@
 			</div>
 			
 		</div>
+		<div class="container hide" id="bill-view">
+			<div class="row show-grid" id="bill-list" style="margin-top: 30px;">
+				<table class="table ">
+					<tr>
+						<th rowspan="2">#</th>
+						<th rowspan="2">Name</th>
+						<th>checkin</th>
+						<th>Room ID</th>
+						<th>Price</th>
+					</tr>
+					<tr>
+						<th>Checkout</th>
+						<th>Days</th>
+						<th>Total Price</th>
+					</tr>
+				</table>
+			</div>
+			
 		</div>
+		</div>
+		</div>
+		<div class="modal hide fade " id="user-login">
+		  <div class="modal-header">
+		    <h3>User Login </h3>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-horizontal">
+		        <div class="control-group">
+		          <label class="control-label" for="name">Name</label>
+		          <div class="controls">
+		            <input type="text" class="input-xlarge" name="user-name" id="user-name">
+		 
+		          </div>
+		        </div>
+		     <div class="control-group">
+		       <label class="control-label" for="password">Password</label>
+		       <div class="controls">
+		         <input type="text" name="user-password" class="input-xlarge" id="user-password">
+		       </div>
+		     </div>
+		    </form>
+		  </div>
+		  <div class="modal-footer">
+		    <a href="#" class="btn btn-primary">Login</a>
+		  </div>
+		</div>
+		
+		
 		<div class="modal hide fade " id="operator-edit">
 		  <div class="modal-header">
 		    <a class="close" data-dismiss="modal">×</a>
@@ -229,9 +277,7 @@
 		    <a href="#" class="btn btn-primary">Save</a>
 		  </div>
 		</div>
-		
-		
-		
+	
 	</body>
 	
 	<script type="text/template" id="operator-item-view">
@@ -257,5 +303,22 @@
 			
 		</div>
 	</div>
+	</script>
+	<script type="text/template" id="bill-item-view">
+	
+	<tr  data-id="{{_id}}">
+		<td rowspan="2">{{_id}}</td>
+		<td  rowspan="2">{{client_name}}</td>
+		<td>{{#if checkin}}{{checkin}}{{else}} - {{/if}}</td>
+		<td >{{room_id}}</td>
+		<td>{{price}}</td>
+	</tr>
+	<tr data-id="{{_id}}">
+		<td>{{#if checkout}}{{checkout}}{{else}} - {{/if}}</td>
+		<td>{{#if checkout}}{{days}}{{else}} - {{/if}}</td>
+		<td>
+			{{#if checkout}}{{total_price}}{{else}} - {{/if}}
+		</td>
+	</tr>
 	</script>
 </html>

@@ -5,24 +5,29 @@
 		, el:$('#room-view')
 		, initialize:function(){
 			var self = this;
-			console.log('roomView:init');
 			this.$list = $('#room-list').isotope({ 
 				  itemSelector: '.room-item'
-				, itemPositionDataEnabled:true
-				, transformsEnabled:true
-				, containerStyle:{ position: 'relative', overflow: 'hidden' }
-				, getSortData : {
-				    status : function( $elem ) {
-				      return $elem.attr('data-status');
-				    },
-				    type : function( $elem ) {
-				      return $elem.attr('data-type');
-				    },
-				    price : function ( $elem ) {
-				      return $elem.attr('data-price');
-				    }
-				  }
-			 });;
+			 });
+			server.on('user:login',function(){
+				self.$list.isotope({ 
+					  itemSelector: '.room-item'
+					, itemPositionDataEnabled:true
+					, transformsEnabled:true
+					, containerStyle:{ position: 'relative', overflow: 'hidden' }
+					, getSortData : {
+					    status : function( $elem ) {
+					      return $elem.attr('data-status');
+					    },
+					    type : function( $elem ) {
+					      return $elem.attr('data-type');
+					    },
+					    price : function ( $elem ) {
+					      return $elem.attr('data-price');
+					    }
+					  }
+				 });
+			})
+			
 			this.template = Handlebars.compile($('#room-item-view').html());
 			this.collection
 						.on("reset",this.addAll.bind(this),this);

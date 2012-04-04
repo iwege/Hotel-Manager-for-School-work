@@ -27,6 +27,7 @@ yepnope([{
 			, 'js/app.config.js'
 			, 'js/app.observer.js'
 			, 'js/app.storage.js'
+			, 'js/app.login.js'
 		],
 	},{
 		load:[
@@ -47,5 +48,10 @@ yepnope([{
 			, 'js/view/bill.js'
 			, 'js/view/checkin.js'
 			, 'js/view/checkout.js'
+			, 'js/view/login.js'
 		]
+		, complete:function(){
+
+			App.init();
+		}
 	}]);

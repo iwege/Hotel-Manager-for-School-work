@@ -14,10 +14,10 @@
 			info.id_number = parseInt(info.id_number);
 			info.age = parseInt(info.age);
 			info.price = parseFloat(info.price);
-			console.log(info);
+		
 			db.save(info,function(err,id){
 				self.set({"_id":id});
-				console.log(err,id);
+
 				opt && opt.success && opt.success(id);
 			});
 		}

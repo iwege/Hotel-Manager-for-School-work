@@ -2,11 +2,12 @@
 <html>
 	<head>
 		<title>Hotel Manager </title>
-		<script src="js/lib/yepnope/yepnope.js"></script>
+		<script src="js/lib/yepnope.js"></script>
 		<script src="js/app.loader.js"></script>
 		<link href="bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
 		<link href="bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
 		<link href="css/app.css" rel="stylesheet">
+		
 	</head>
 	<body>
 	<div id="workspace" class="hide">
@@ -18,7 +19,6 @@
 		      		<li><a href="#" onclick="$('#operator-view').removeClass('hide');$('#room-view,#bill-view').addClass('hide')">Operators</a></li>
 		      		<li><a href="#" onclick="$('#room-view').removeClass('hide');$('#operator-view,#bill-view').addClass('hide')">Rooms</a></li>
 		      		<li><a href="#" onclick="$('#bill-view').removeClass('hide');$('#room-view,#operator-view').addClass('hide');App.observer.trigger('bill:refresh');">Bills</a></li>
-		      		<li><a href="#">Search</a></li>
 		      	</ul>
 		    </div>
 		  </div>
@@ -57,23 +57,69 @@
 			
 		</div>
 		<div class="container hide" id="bill-view">
-			<div class="row show-grid" id="bill-list" style="margin-top: 30px;">
-				<table class="table ">
-					<tr>
-						<th rowspan="2">#</th>
-						<th rowspan="2">Name</th>
-						<th>checkin</th>
-						<th>Room ID</th>
-						<th>Price</th>
-					</tr>
-					<tr>
-						<th>Checkout</th>
-						<th>Days</th>
-						<th>Total Price</th>
-					</tr>
-				</table>
+			<div class="container-fluid">
+				<div class="row-fluid">
+				<div class="span3" id="bill-search" style="margin-top: 30px;">
+					<form name="search">
+						<div class="control-group">
+						      <label class="control-label" for="search_client">Name</label>
+						      <div class="controls">
+						        <input type="text" class="input-large"  name="search_client">
+						      </div>
+						    </div>
+						   <div class="control-group">
+						         <label class="control-label" for="search_id">I.D</label>
+						         <div class="controls">
+						           <input type="text" class="input-large" id="search_id" name="search_id">
+						         </div>
+						       </div>
+						   <div class="control-group">
+						         <label class="control-label" for="search_status">Status</label>
+						         <div class="controls">
+						           <input type="checkbox" class="input-large" id="search_status" name="search_status">Checkout
+						         </div>
+						       </div>
+						      <div class="control-group">
+						            <label class="control-label" for="search_room_id">Room_id</label>
+						            <div class="controls">
+						              <input type="text" class="input-large" id="search_room_id" name="search_room_id">
+						            </div>
+						          </div>
+						       <div class="control-group">
+						             <label class="control-label" for="search_sex">Sex</label>
+						             <div class="controls">
+						               <input type="radio" class="input-large" id="search_sex" name="search_sex" value="Man">Man
+						               <br/>
+						                 <input type="radio" class="input-large" id="search_sex" name="search_sex" value="Female">Female
+						             </div>
+						           </div>
+						<a class="btn btn-primary">Search</a>
+					</form>
+				
+				</div>
+				<div class="span9" id="bill-list" style="margin-top: 30px;">
+					<table class="table ">
+						<tr>
+							<th rowspan="3">#</th>
+							<th rowspan="3">Name</th>
+							<th>checkin</th>
+							<th>Room ID</th>
+							<th>Price</th>
+						</tr>
+						<tr>
+							<th>Checkout</th>
+							<th>Days</th>
+							<th>Total Price</th>
+						</tr>
+						<tr>
+							<th>I.D</th>
+							<th>Sex</th>
+							<th>Age</th>
+						</tr>
+					</table>
+				</div>
 			</div>
-			
+			</div>
 		</div>
 		</div>
 		</div>
@@ -307,8 +353,8 @@
 	<script type="text/template" id="bill-item-view">
 	
 	<tr  data-id="{{_id}}">
-		<td rowspan="2">{{_id}}</td>
-		<td  rowspan="2">{{client_name}}</td>
+		<td rowspan="3">{{_id}}</td>
+		<td  rowspan="3">{{client_name}}</td>
 		<td>{{#if checkin}}{{checkin}}{{else}} - {{/if}}</td>
 		<td >{{room_id}}</td>
 		<td>{{price}}</td>
@@ -318,6 +364,13 @@
 		<td>{{#if checkout}}{{days}}{{else}} - {{/if}}</td>
 		<td>
 			{{#if checkout}}{{total_price}}{{else}} - {{/if}}
+		</td>
+	</tr>
+	<tr data-id="{{_id}}">
+		<td>{{#if id_number}}{{id_number}}{{else}} - {{/if}}</td>
+		<td>{{#if sex}}{{sex}}{{else}} - {{/if}}</td>
+		<td>
+			{{#if age}}{{age}}{{else}} - {{/if}}
 		</td>
 	</tr>
 	</script>

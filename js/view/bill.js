@@ -13,7 +13,7 @@
 				self.collection.reset(data);
 			});
 			server.on('bill:refresh',function(){
-				console.log('bill:refresh');
+				
 				self.collection.getAll();
 			});
 		}
@@ -47,15 +47,41 @@
 	var server = app.observer;
 	var db = app.storage.bills;
 	var billSearch = Backbone.View.extend({
-		  el:$('#bills-search')
+		  el:$('#bill-search')
 		, initialize:function(){
 			
 		}
 		, events:{
-			
+			"click a.btn":"search"
 		}
-		, search:function(info){
-			db.find(info).doSelect(function(err, data){
+		, search:function(){
+			var $form = $("form[name='search']").serializeArray();
+			var $fd = {};
+		
+			$form.forEach(function(item){
+				$fd[item.name] = item.value;
+			});
+			var sql = 'SELECT * FROM bills WHERE 1 ';
+			console.log($fd);
+			if ($fd['search_client']) {
+				sql += ' AND client_name LIKE "%'+$fd['search_client']+'%" ';
+			}
+			if ($fd['search_id']) {
+				sql += ' AND id_number LIKE "%'+$fd['search_id']+'%"';
+			}
+			if ($fd['search_sex']) {
+			
+				sql += ' AND sex = "'+$fd['search_sex']+'"';
+			}
+			if ($fd['search_status']) {
+				sql += ' AND checkout != ""';
+			}
+			if ($fd['search_room_id']) {
+				sql += ' AND room_id = "'+$fd['search_room_id']+'"';
+			}			
+			
+			console.log(sql);
+			app.storage.db.SQL(sql,'',function(err, data){
 				server.trigger('search:end',data);
 			});
 		}

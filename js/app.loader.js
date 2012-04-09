@@ -1,11 +1,11 @@
 yepnope([{
-	  load:['js/lib/underscore/underscore.js'
-	  		,'js/lib/jquery/dist/jquery.js'
-	  		,'js/lib/isotope/jquery.isotope.js'
-	  		,'js/lib/isotope/css/style.css'
-			,'js/lib/backbone/backbone.js'
-			,'js/lib/snake/build/snake.js'
-			,'js/lib/handlebars/dist/handlebars.js'
+	  load:['js/lib/underscore.js'
+	  		,'js/lib/jquery.js'
+	  		,'js/lib/jquery.isotope.js'
+	  		,'css/style.css'
+			,'js/lib/backbone.js'
+			,'js/lib/snake.js'
+			,'js/lib/handlebars.js'
 			,'js/lib/dateformat.js'
 	]}
 	,{

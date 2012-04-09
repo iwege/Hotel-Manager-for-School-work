@@ -36,7 +36,11 @@
 			
 		}
 		, show:function(){
-			console.log('user:beforeLogin');
+			var user = localStorage.getItem('login');
+			if (user) {
+				this.login('',user);
+				return ;
+			}
 			this.$el.modal('show');
 		}
 		, hide: function(){

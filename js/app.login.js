@@ -2,7 +2,7 @@
 	var server = app.observer;
 	app.user = {
 		init:function(){
-			//localStorage.setItem('login','0');
+			localStorage.removeItem('login');
 			server.trigger('user:beforeLogin');
 		}
 	};

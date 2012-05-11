@@ -58,6 +58,7 @@
 			, 'click button.room-status':'filter'
 			, 'click button.room-price':'filter'
 			, 'click button.room-type':'filter'
+			, 'click a.del':'del'
 		}
 		, addAll:function(data){
 			var self=  this;
@@ -130,10 +131,11 @@
 		, remove:function(evt){
 			var $el  = $(evt.target);
 			var id = $el.data('id');
+			
 			var model = this.collection.get(id);
 			var self = this;
 			model.delete(function(){
-				self.$el.find('table tr[data-id="'+id+'"]').remove();
+				$el.remove();
 			});
 		}
 		, change:function(data){
@@ -141,8 +143,12 @@
 			var model  = this.collection.get(data.id);
 			delete data.id;
 			model.set(data);
-			this.$el.find('table tr[data-id="'+data.id+'"]').replaceWith(this.template(data));
+			this.$el.find('div[data-id="'+data.id+'"]').replaceWith(this.template(data));
 			server.trigger('room:hideEdit');
+		}
+		, del:function(evt){
+			var $target = $(evt.target).parent().parent().parent();	
+			this.remove({target:$target[0]});
 		}
 	});
 	app.view.room = new room();

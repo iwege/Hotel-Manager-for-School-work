@@ -5,7 +5,6 @@
 		<script src="js/lib/yepnope.js"></script>
 		<script src="js/app.loader.js"></script>
 		<link href="bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
-		<link href="bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
 		<link href="css/app.css" rel="stylesheet">
 		
 	</head>
@@ -340,13 +339,12 @@
 	</script>
 	<script type="text/template" id="room-item-view">
 	<div class="room-item span3 {{#if room_status}} checkin{{/if}}" data-id="{{_id}}" data-name="{{room_name}}" data-type="{{room_type}}" data-status="{{room_status}}" data-price="{{room_price}}">
-		{{room_name}} / {{room_type}}
+		<h2>{{room_name}}</h2>
+		<div>{{room_type}} <span style="float:right"> <a href="###" class="del">Delete</a></span></div>
 		<div class="room-option">
 			
-				<button class="btn  checkout">Checkout</button>
-			
-				<button class="btn btn-primary checkin">Checkin</button>
-			
+			<button class="btn  checkout">Checkout</button>
+			<button class="btn btn-primary checkin">Checkin</button>
 		</div>
 	</div>
 	</script>
